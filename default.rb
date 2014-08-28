@@ -25,6 +25,7 @@ prepend_file('Gemfile', "ruby '2.1.2'\n")
 
 run 'rm README*'
 run 'touch README.md'
+run 'rvm reload'
 run 'bundle install'
 run 'rails g rspec:install'
 
