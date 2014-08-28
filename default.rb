@@ -17,10 +17,11 @@ gem_group :production do
   gem 'unicorn', '~> 4.3.1'
 end
 
-prepend_file('Gemfile', "#ruby-gemset=#{@app_name}")
-prepend_file('Gemfile', "ruby '2.1.2'")
 gsub_file('Gemfile', /#.+/, '')
 gsub_file('Gemfile', /group :test/, "\ngroup :test")
+
+prepend_file('Gemfile', "#ruby-gemset=#{@app_name}\n")
+prepend_file('Gemfile', "ruby '2.1.2'\n")
 
 run 'rm README*'
 run 'touch README.md'
