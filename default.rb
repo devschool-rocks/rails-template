@@ -17,6 +17,13 @@ gem_group :production do
   gem 'unicorn', '~> 4.3.1'
 end
 
+prepend_file('Gemfile', "#ruby-gemset=#{@app_name}")
+prepend_file('Gemfile', "ruby '2.1.2'")
+gsub_file('Gemfile', /#.+/, '')
+gsub_file('Gemfile', /group :test/, "\ngroup :test")
+
+run 'rm README*'
+run 'touch README.md'
 run 'bundle install'
 run 'rails g rspec:install'
 
