@@ -13,7 +13,7 @@ gem_group :test do
 end
 
 gem_group :production do
-  gem 'rails_12_factor', '~> 0.0.2'
+  gem 'rails_12factor', '~> 0.0.2'
   gem 'unicorn', '~> 4.3.1'
 end
 
