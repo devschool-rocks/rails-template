@@ -17,7 +17,7 @@ gem_group :production do
   gem 'unicorn', '~> 4.3.1'
 end
 
-gsub_file('Gemfile', /#.+/, '')
+gsub_file('Gemfile', /^\s*#.*\n/, '')
 gsub_file('Gemfile', /group :test/, "\ngroup :test")
 
 prepend_file('Gemfile', "#ruby-gemset=#{@app_name}\n")
