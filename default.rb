@@ -17,21 +17,28 @@ gem_group :production do
   gem 'unicorn', '~> 4.3.1'
 end
 
-gsub_file('config/routes.rb', /^\s*#.*\n/, '')
+run 'bundle install'
 
-gsub_file('Gemfile', /^\s*#.*\n/, '')
-gsub_file('Gemfile', /source.+$/, "source 'https://rubygems.org'\n")
-gsub_file('Gemfile', /group :test/, "\ngroup :test")
+gsub_file('config/routes.rb', /^\s*#.*\n/, '') # remove comments
 
+gsub_file('config/database.yml', /^\s*#.*\n/, '') # remove comments
+gsub_file('config/database.yml', /^\n/, '') # remove empty lines
+gsub_file('config/database.yml', /\s+username.*$/, '')
+gsub_file('config/database.yml', /\s+password.*$/, '')
+
+gsub_file('Gemfile', /^\s*#.*\n/, '') # remove comments
+inject_into_file('Gemfile', "\n", after: "source 'https://rubygems.org'")
+inject_into_file('Gemfile', "\n", before: "group :test do")
 prepend_file('Gemfile', "#ruby-gemset=#{@app_name}\n")
 prepend_file('Gemfile', "ruby '2.1.2'\n")
 
+remove_file 'README.rdoc'
+create_file 'README.md'
+
 run 'curl -o config/unicorn.rb https://raw.githubusercontent.com/joemsak/rails-template/master/config/unicorn.rb'
-run 'rm README*'
-run 'touch README.md'
-run 'mkdir spec'
-run 'touch spec/.keep'
-run 'bundle install'
+
+rake "db:create", :env => 'development'
+rake "db:create", :env => 'test'
 
 generate 'rspec:install'
 
