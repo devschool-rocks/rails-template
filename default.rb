@@ -29,7 +29,8 @@ prepend_file('Gemfile', "ruby '2.1.2'\n")
 run 'curl -o config/unicorn.rb https://raw.githubusercontent.com/joemsak/rails-template/master/config/unicorn.rb'
 run 'rm README*'
 run 'touch README.md'
-run 'cd .. && cd -'
+run 'mkdir spec'
+run 'touch spec/.keep'
 run 'bundle install'
 run 'rails g rspec:install'
 
