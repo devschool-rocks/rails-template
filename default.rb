@@ -32,7 +32,8 @@ run 'touch README.md'
 run 'mkdir spec'
 run 'touch spec/.keep'
 run 'bundle install'
-run 'rails g rspec:install'
+
+generate 'rspec:install'
 
 append_file 'Rakefile', <<RAKEFILE
 begin
