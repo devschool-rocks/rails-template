@@ -17,6 +17,8 @@ gem_group :production do
   gem 'unicorn', '~> 4.3.1'
 end
 
+gsub_file('config/routes.rb', /^\s*#.*\n/, '')
+
 gsub_file('Gemfile', /^\s*#.*\n/, '')
 gsub_file('Gemfile', /source.+$/, "source 'https://rubygems.org'\n")
 gsub_file('Gemfile', /group :test/, "\ngroup :test")
