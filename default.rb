@@ -18,6 +18,7 @@ gem_group :production do
 end
 
 gsub_file('Gemfile', /^\s*#.*\n/, '')
+gsub_file('Gemfile', /source.+$/, "source 'https://rubygems.org'\n")
 gsub_file('Gemfile', /group :test/, "\ngroup :test")
 
 prepend_file('Gemfile', "#ruby-gemset=#{@app_name}\n")
