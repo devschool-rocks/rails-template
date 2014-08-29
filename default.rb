@@ -33,6 +33,15 @@ run 'cd .. && cd -'
 run 'bundle install'
 run 'rails g rspec:install'
 
+append_file 'Rakefile', <<RAKEFILE
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
+task default: :spec
+RAKEFILE
+
 git :init
 git add: '.'
 git commit: "-am 'Initial commit'"
