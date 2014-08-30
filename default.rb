@@ -44,7 +44,7 @@ rake "db:create", :env => 'test'
 generate 'rspec:install'
 generate 'foundation:install'
 
-gsub_file('spec/spec_helper.rb', /^\s*#.*\n/, '') # remove comments
+gsub_file('spec/spec_helper.rb', /^\s*(?:#|=).*\n/, '') # remove comments
 
 append_file 'Rakefile', <<RAKEFILE
 begin
