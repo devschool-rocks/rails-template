@@ -36,11 +36,13 @@ remove_file 'README.rdoc'
 create_file 'README.md'
 
 run 'curl -o config/unicorn.rb https://raw.githubusercontent.com/joemsak/rails-template/master/config/unicorn.rb'
+run 'curl -o Procfile https://raw.githubusercontent.com/joemsak/rails-template/master/Procfile'
 
 rake "db:create", :env => 'development'
 rake "db:create", :env => 'test'
 
 generate 'rspec:install'
+generate 'foundation:install'
 
 append_file 'Rakefile', <<RAKEFILE
 begin
