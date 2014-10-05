@@ -1,3 +1,4 @@
+gem 'underscore-rails', '~> 1.7.0'
 gem 'foundation-rails', '~> 5.3.3.0'
 gem 'friendly_id', '~> 5.0.4'
 gem 'draper', '~> 1.3.1'
@@ -10,6 +11,13 @@ gem_group :test do
   gem 'capybara-webkit', '~> 1.2.0'
   gem 'quiet_assets', '~> 1.0.3'
   gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'poltergeist', '~> 1.5.1'
+  gem 'konacha', '~> 3.2.4'
+  gem 'guard-konacha', '~> 1.0.5'
+end
+
+gem_group :test, :development do
+  gem 'sinon-rails', '~> 1.10.3'
 end
 
 gem_group :production do
