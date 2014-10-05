@@ -52,6 +52,8 @@ rake "db:create", :env => 'test'
 generate 'rspec:install'
 generate 'foundation:install'
 
+run 'guard init konacha'
+
 gsub_file('spec/spec_helper.rb', /^\s*(?:#|=).*\n/, '') # remove comments
 
 append_file 'Rakefile', <<RAKEFILE
