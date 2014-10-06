@@ -14,6 +14,7 @@ gem_group :test do
   gem 'poltergeist', '~> 1.5.1'
   gem 'konacha', '~> 3.2.4'
   gem 'guard-konacha', '~> 1.0.5'
+  gem 'spring-commands-rspec', '~> 1.0.2'
 end
 
 gem_group :test, :development do
@@ -53,6 +54,7 @@ generate 'rspec:install'
 generate 'foundation:install'
 
 run 'guard init konacha'
+run 'spring binstub rspec'
 
 gsub_file('spec/spec_helper.rb', /^\s*(?:#|=).*\n/, '') # remove comments
 
