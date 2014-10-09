@@ -1,29 +1,29 @@
-gem 'underscore-rails', '~> 1.7.0'
-gem 'foundation-rails', '~> 5.3.3.0'
-gem 'friendly_id', '~> 5.0.4'
-gem 'draper', '~> 1.3.1'
+gem 'underscore-rails', '~> 1.7'
+gem 'foundation-rails', '~> 5.3'
+gem 'friendly_id', '~> 5.0'
+gem 'draper', '~> 1.3'
 
 gem_group :test do
-  gem 'pry-rails', '~> 0.3.2'
-  gem 'rspec-rails', '~> 3.0.2'
-  gem 'database_cleaner', '~> 1.3.0'
-  gem 'launchy', '~> 2.4.2'
-  gem 'capybara-webkit', '~> 1.2.0'
-  gem 'quiet_assets', '~> 1.0.3'
-  gem 'factory_girl_rails', '~> 4.4.1'
-  gem 'poltergeist', '~> 1.5.1'
-  gem 'konacha', '~> 3.2.4'
-  gem 'guard-konacha', '~> 1.0.5'
-  gem 'spring-commands-rspec', '~> 1.0.2'
+  gem 'pry-rails', '~> 0.3'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'database_cleaner', '~> 1.3'
+  gem 'launchy', '~> 2.4'
+  gem 'capybara-webkit', '~> 1.2'
+  gem 'quiet_assets', '~> 1.0'
+  gem 'factory_girl_rails', '~> 4.4'
+  gem 'poltergeist', '~> 1.5'
+  gem 'konacha', '~> 3.2'
+  gem 'guard-konacha', '~> 1.0'
+  gem 'spring-commands-rspec', '~> 1.0'
 end
 
 gem_group :test, :development do
-  gem 'sinon-rails', '~> 1.10.3'
+  gem 'sinon-rails', '~> 1.10'
 end
 
 gem_group :production do
-  gem 'rails_12factor', '~> 0.0.2'
-  gem 'unicorn', '~> 4.3.1'
+  gem 'rails_12factor', '~> 0.0'
+  gem 'unicorn', '~> 4.3'
 end
 
 run 'bundle install'
