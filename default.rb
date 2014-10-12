@@ -39,7 +39,7 @@ gsub_file('Gemfile', /^\s*#.*\n/, '') # remove comments
 inject_into_file('Gemfile', "\n", after: "source 'https://rubygems.org'")
 inject_into_file('Gemfile', "\n", before: "group :test do")
 prepend_file('Gemfile', "#ruby-gemset=#{@app_name}\n")
-prepend_file('Gemfile', "ruby '2.1.2'\n")
+prepend_file('Gemfile', "ruby '2.1.3'\n")
 
 remove_file 'README.rdoc'
 create_file 'README.md'
