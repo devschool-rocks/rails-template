@@ -5,6 +5,7 @@ gem 'draper', '~> 1.3'
 
 gem_group :test do
   gem 'pry-rails', '~> 0.3'
+  gem 'pry-nav', '~> 0.2'
   gem 'rspec-rails', '~> 3.0'
   gem 'database_cleaner', '~> 1.3'
   gem 'launchy', '~> 2.4'
