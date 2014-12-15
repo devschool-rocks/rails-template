@@ -1,7 +1,6 @@
 gem 'underscore-rails', '~> 1.7'
 gem 'foundation-rails', '~> 5.3'
 gem 'friendly_id', '~> 5.0'
-gem 'draper', '~> 1.3'
 
 gem_group :test do
   gem 'pry-rails', '~> 0.3'
