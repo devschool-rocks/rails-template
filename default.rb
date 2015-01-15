@@ -15,6 +15,7 @@ end
 
 gem_group :test, :development do
   gem 'quiet_assets', '~> 1.0'
+  gem 'dotenv-rails'
 end
 
 gem_group :production do
