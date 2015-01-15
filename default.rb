@@ -10,14 +10,10 @@ gem_group :test do
   gem 'launchy', '~> 2.4'
   gem 'capybara-webkit', '~> 1.2'
   gem 'factory_girl_rails', '~> 4.4'
-  gem 'poltergeist', '~> 1.5'
-  gem 'konacha', '~> 3.2'
-  gem 'guard-konacha', '~> 1.0'
   gem 'spring-commands-rspec', '~> 1.0'
 end
 
 gem_group :test, :development do
-  gem 'sinon-rails', '~> 1.10'
   gem 'quiet_assets', '~> 1.0'
 end
 
@@ -53,7 +49,6 @@ rake "db:create", :env => 'test'
 generate 'rspec:install'
 generate 'foundation:install'
 
-run 'guard init konacha'
 run 'spring binstub rspec'
 
 gsub_file('spec/spec_helper.rb', /^\s*(?:#|=).*\n/, '') # remove comments
