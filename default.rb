@@ -3,8 +3,6 @@ gem 'foundation-rails', '~> 5.5'
 gem 'friendly_id', '~> 5.1'
 
 gem_group :test do
-  gem 'pry-rails', '~> 0.3'
-  gem 'pry-nav', '~> 0.2'
   gem 'rspec-rails', '~> 3.3'
   gem 'database_cleaner', '~> 1.4'
   gem 'launchy', '~> 2.4'
@@ -16,6 +14,8 @@ end
 gem_group :test, :development do
   gem 'quiet_assets', '~> 1.1'
   gem 'dotenv-rails', '~> 2.0'
+  gem 'pry-rails', '~> 0.3'
+  gem 'pry-nav', '~> 0.2'
 end
 
 gem_group :production do
@@ -33,8 +33,7 @@ gsub_file('config/database.yml', /\s+username.*$/, '')
 gsub_file('config/database.yml', /\s+password.*$/, '')
 
 gsub_file('Gemfile', /^\s*#.*\n/, '') # remove comments
-inject_into_file('Gemfile', "\n", after: "source 'https://rubygems.org'")
-inject_into_file('Gemfile', "\n", before: "group :test do")
+inject_into_file('Gemfile', "\n\n", after: "source 'https://rubygems.org'")
 prepend_file('Gemfile', "#ruby-gemset=#{@app_name}\n")
 prepend_file('Gemfile', "ruby '2.2.2'\n")
 
@@ -52,6 +51,7 @@ generate 'foundation:install'
 
 run 'spring binstub rspec'
 
+gsub_file('app/views/layouts/application.html.erb', 'foundation-rails', @app_name)
 gsub_file('spec/spec_helper.rb', /^\s*(?:#|=).*\n/, '') # remove comments
 
 append_file 'Rakefile', <<RAKEFILE
