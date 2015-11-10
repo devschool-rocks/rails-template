@@ -35,7 +35,7 @@ gsub_file('config/database.yml', /\s+password.*$/, '')
 gsub_file('Gemfile', /^\s*#.*\n/, '') # remove comments
 inject_into_file('Gemfile', "\n\n", after: "source 'https://rubygems.org'")
 prepend_file('Gemfile', "#ruby-gemset=#{@app_name}\n")
-prepend_file('Gemfile', "ruby '2.2.2'\n")
+prepend_file('Gemfile', "ruby '2.2.3'\n")
 
 remove_file 'README.rdoc'
 create_file 'README.md'
