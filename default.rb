@@ -75,5 +75,6 @@ git commit: "-am 'Initial commit'"
 
 run 'heroku create'
 run 'heroku buildpacks:set https://github.com/ddollar/heroku-buildpack-multi.git'
+run 'heroku buildpacks:add https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks'
 run 'heroku config:set DEPLOY_TASKS="db:migrate"'
 run 'heroku addons:create newrelic'
