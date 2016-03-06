@@ -54,9 +54,9 @@ prepend_file('Gemfile', "ruby '2.3.0'\n")
 remove_file 'README.rdoc'
 create_file 'README.md'
 
-run 'curl -o config/unicorn.rb https://raw.githubusercontent.com/devschool/rails-template/master/config/unicorn.rb'
-run 'curl -o Procfile https://raw.githubusercontent.com/devschool/rails-template/master/Procfile'
-run 'curl -o .buildpacks https://raw.githubusercontent.com/devschool/rails-template/master/.buildpacks'
+run 'curl -o config/unicorn.rb https://raw.githubusercontent.com/devschool-rocks/rails-template/master/config/unicorn.rb'
+run 'curl -o Procfile https://raw.githubusercontent.com/devschool-rocks/rails-template/master/Procfile'
+run 'curl -o .buildpacks https://raw.githubusercontent.com/devschool-rocks/rails-template/master/.buildpacks'
 
 rake "db:create", :env => 'development'
 rake "db:create", :env => 'test'
