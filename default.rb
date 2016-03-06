@@ -1,8 +1,3 @@
-add_source 'https://rails-assets.org' # for bootstrap: rails-assets-tether
-
-gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'rails-assets-tether', '>= 1.1.0'
-
 gem 'devise'
 
 gem 'friendly_id'
@@ -36,6 +31,11 @@ gem_group :production do
   gem 'unicorn'
   gem 'newrelic_rpm'
   gem 'therubyracer', require: "v8"
+end
+
+gem 'bootstrap', '~> 4.0.0.alpha3'
+add_source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
 end
 
 run 'bundle install'
