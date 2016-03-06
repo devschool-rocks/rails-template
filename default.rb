@@ -53,12 +53,11 @@ run 'curl -o .buildpacks https://raw.githubusercontent.com/devschool-rocks/rails
 rake "db:create", :env => 'development'
 rake "db:create", :env => 'test'
 
-generate 'rspec:install'
-
+run 'rails g rspec:install'
 run 'spring binstub rspec'
+run 'spring binstub rake'
 
 gsub_file('spec/spec_helper.rb', /^\s*(?:#|=).*\n/, '') # remove comments
-gsub_file('spec/rails_helper.rb', /^\s*(?:#|=)\s[^Dir].*\n/, '') # remove comments
 
 append_file 'Rakefile', <<RAKEFILE
 begin
@@ -70,6 +69,9 @@ task default: :spec
 RAKEFILE
 
 git :init
+
+append_file '.gitignore', "spec/*.txt"
+
 git add: '.'
 git commit: "-am 'Initial commit'"
 
