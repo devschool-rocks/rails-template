@@ -17,11 +17,11 @@ gem_group :test do
   gem 'timecop'
 end
 
-group :webkit do
+gem_group :webkit do
   gem 'capybara-webkit'
 end
 
-group :selenium do
+gem_group :selenium do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
