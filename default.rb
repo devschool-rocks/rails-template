@@ -12,15 +12,6 @@ gem_group :test do
   gem 'timecop'
 end
 
-gem_group :webkit do
-  gem 'capybara-webkit'
-end
-
-gem_group :selenium do
-  gem 'capybara'
-  gem 'selenium-webdriver'
-end
-
 gem_group :test, :development do
   gem 'quiet_assets'
   gem 'dotenv-rails'
@@ -38,7 +29,7 @@ add_source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
-run 'bundle install'
+run 'bundle install --path .bundle/gems --binstubs .bundle/bin --without production'
 
 gsub_file('config/routes.rb', /^\s*#.*\n/, '') # remove comments
 
@@ -55,6 +46,7 @@ remove_file 'README.rdoc'
 create_file 'README.md'
 
 run 'curl -o config/unicorn.rb https://raw.githubusercontent.com/devschool-rocks/rails-template/master/config/unicorn.rb'
+run 'curl -o config/newrelic.yml https://raw.githubusercontent.com/devschool-rocks/rails-template/master/newrelic.yml'
 run 'curl -o Procfile https://raw.githubusercontent.com/devschool-rocks/rails-template/master/Procfile'
 run 'curl -o .buildpacks https://raw.githubusercontent.com/devschool-rocks/rails-template/master/.buildpacks'
 
@@ -66,6 +58,7 @@ generate 'rspec:install'
 run 'spring binstub rspec'
 
 gsub_file('spec/spec_helper.rb', /^\s*(?:#|=).*\n/, '') # remove comments
+gsub_file('spec/rails_helper.rb', /^\s*(?:#|=)\s[^Dir].*\n/, '') # remove comments
 
 append_file 'Rakefile', <<RAKEFILE
 begin
@@ -82,5 +75,5 @@ git commit: "-am 'Initial commit'"
 
 run 'heroku create'
 run 'heroku buildpacks:set https://github.com/ddollar/heroku-buildpack-multi.git'
-run 'git push heroku master'
-run 'heroku open'
+run 'heroku config:set DEPLOY_TASKS="db:migrate"'
+run 'heroku addons:create newrelic'
